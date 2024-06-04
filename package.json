@@ -2,9 +2,18 @@
   "name": "zooproj",
   "version": "1.0.0",
   "description": "",
-  "main": "todo.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon src/app.js --ignore sessions --ext js,jsx",
+     "mig": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate",
+ "seed": "npx sequelize db:seed:all",
+ "createDB": "npx sequelize db:create",
+ "dropDB": "npx sequelize db:drop",
+ "remig": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate",
+ "initdb": "npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+ "prep-db": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   },
   "keywords": [],
   "author": "",

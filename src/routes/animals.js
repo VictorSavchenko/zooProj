@@ -1,28 +1,37 @@
 const farmRouter = require('express').Router();
 const renderTemplate = require('../utilites/renderTemplate');
-const FarmPage = require('../views/Farm');
-// const { User, Farm, Pet } = require('../../db/models');
+const animalPage = require('../views/Animals');
+const { Animal, Photo } = require('../../db/models');
 
 farmRouter.get('/:id', async (req, res) => {
-  const { email } = req.session;
-  try {
-    const farm = await Farm.findOne({ where: { id: req.params.id } }); //!
-    const pets = await Pet.findAll({ where: { farm_id: farm.id} });
-    let farmUser;
+  const { login } = req.session;
+  try { 
+    const animals = Animal.findAll({
+      include: [{
+        model: Photo,
+        as: 'images',
+        where: { animalId: Sequelize.col('animal.id'),} //
+      }]
+    })
+    console.log('+++++', animals)
 
-    if(email) {
-      const user = await User.findOne({ where: { email } });
-      if(farm.user_id === user.id) {
-        farmUser = true;
-      } else {
-        farmUser = false;
-      }
-      renderTemplate(FarmPage, { email, farm, farmUser, pets }, res);
+    // const farm = await Farm.findOne({ where: { id: req.params.id } }); //!
+    // const pets = await Pet.findAll({ where: { farm_id: farm.id} });
+    // let farmUser;
 
-    } else {
-      farmUser = false;
-      renderTemplate(FarmPage, { email, farm, farmUser, pets }, res);
-    }
+    // if(login) {
+    //   const user = await User.findOne({ where: { email } });
+    //   if(farm.user_id === user.id) {
+    //     farmUser = true;
+    //   } else {
+    //     farmUser = false;
+    //   }
+    //   renderTemplate(animalPage, { email, farm, farmUser, pets }, res);
+
+    // } else {
+    //   farmUser = false;
+      // renderTemplate(animalPage, { login, animals }, res);
+    // }
   
   } catch (error) {
     console.log(error);

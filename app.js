@@ -10,7 +10,7 @@ const FileStore = require('session-file-store')(session);
 const dbConnectionCheckMdw = require('./src/middleware/dbConnectionCheck'); 
 // const { checkUser, secureRoute } = require('./src/middleware/common');
 
-const indexRouter = require('./src/routes/index');
+const animalsRouter = require('./src/routes/animals');
   
 const { PORT } = process.env;
 const app = express();
@@ -34,10 +34,10 @@ app.use(express.static(path.join(process.cwd(), 'public')));
 app.use(session(sessionConfig));
 app.use(dbConnectionCheckMdw); 
   
-app.use('/', indexRouter);
+// app.use('/', indexRouter);
 app.use('/animals', animalsRouter);
-app.use('/admin', adminRouter);
-app.use('/tariff', tariffRouter);
+// app.use('/admin', adminRouter);
+// app.use('/tariff', tariffRouter);
 
 
 app.use('*', (req, res) => {
