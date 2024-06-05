@@ -10,8 +10,8 @@ const { Admin } = require('../../db/models');
 const { checkUser, secureRoute } = require('../middleware/common');
 
 loginRouter.get('/', (req, res) => {
-  const status = req.session?.login;
-  renderTemplate(AdminView, { status }, res);
+  const login = req.session?.login;
+  renderTemplate(AdminView, { login }, res);
 });
 
 loginRouter.post('/login', async (req, res) => {
