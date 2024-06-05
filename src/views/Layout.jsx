@@ -33,7 +33,7 @@ function Layout({ children, login }) {
               <>
                 <a href="/">Тарифы</a>
                 <a href="/">Животные</a>
-                <a href="/login">Админ</a>
+                <a href="/admin">Админ</a>
               </>
             )}
           </div>
