@@ -1,10 +1,10 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-module.exports = function Login({ status }) {
+module.exports = function Login({ login }) {
   return (
-    <Layout>
-      {status ? (
+    <Layout login={login}>
+      {login ? (
         <>
         <a href='/animals'>Перейти к редактированию животных</a>
         <br />

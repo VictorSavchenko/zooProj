@@ -12,7 +12,7 @@ animalsRouter.get('/', async (req, res) => {
         model: Photo,
       }],
     });
-    const login = false;
+    const login = true;
     // console.log('======', animals);
     // console.log('======', animals[1].Photos);
 
