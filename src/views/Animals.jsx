@@ -3,12 +3,12 @@ const Layout = require('./Layout');
 const Card = require('../components/All');
 
 module.exports = function Animals({ login, animals }) {
+module.exports = function Animals({ login, animals }) {
   return (
     <Layout>
       <div>
         <h2>Добрый день!</h2>
         <h3>Это наши животные:</h3>
-
         {login ? (
           <>
             <form className="animalForm">
@@ -27,7 +27,6 @@ module.exports = function Animals({ login, animals }) {
               <h3 className="animalErrMsg" />
               <hr />
             </form>
-
             <div className="subscribe">
               {animals.map((animal, index) => (
                 <div className="entryitem" id={animal.id} key={animal.id}>
@@ -57,6 +56,7 @@ module.exports = function Animals({ login, animals }) {
 
       </div>
       <script defer src="/js/animal.js" />
+
     </Layout>
   );
 };
