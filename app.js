@@ -5,7 +5,7 @@ const express = require('express');
 const morgan = require('morgan');
 
 const session = require('express-session');
-// const FileStore = require('session-file-store')(session);
+const FileStore = require('session-file-store')(session);
 
 const dbConnectionCheckMdw = require('./src/middleware/dbConnectionCheck');
 // const { checkUser, secureRoute } = require('./src/middleware/common');
