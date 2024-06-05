@@ -25,20 +25,29 @@ form.addEventListener('submit', async (e) => {
 
       const { status, animal, image } = await response.json();
       if (status === 'success') {
+        console.log(image.img);
         const newPet = `
         <div class="entryitem" id=${animal.id} key=${animal.id}>
-        <a class="card">
-          <li class="photo" id=${image.id} key=${image.id}>
-            <img src=${image.img} alt="animal" />
+
+        <div class="card" id={animal} class="carousel-inner">
+            <div class="carousel-item">
+              <img
+                src=${image.img}
+                class="d-block w-100"
+                alt="animal"
+                data-id=${image.id}
+              />
             <button data-imgid=${image.id} id=${animal.id} type="button" class="btn btn-outline-dark"> удалить</button>
-          </li>
-       </a>
+            </div>
+        </div>
+
           <a href=${`/animals/${animal.id}`} class="btn btn-primary">${animal.name}</a>
           <button data-animalid=${animal.id} id=${animal.id} type="button" class="btn btn-danger">удалить</button>
        </div>
           `;
 
         div.insertAdjacentHTML('beforeend', newPet);
+        console.log(newPet)
         document.querySelectorAll('input').forEach((el) => el.value = '');
         errMsg?.remove();
       }
