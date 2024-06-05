@@ -1,6 +1,4 @@
 const React = require('react');
-
-
 module.exports = function Card({ animal, images }) {
   return (
     <div

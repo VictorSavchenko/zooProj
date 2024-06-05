@@ -8,7 +8,7 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
 const dbConnectionCheckMdw = require('./src/middleware/dbConnectionCheck');
-// const { checkUser, secureRoute } = require('./src/middleware/common');
+const { checkUser, secureRoute } = require('./src/middleware/common');
 
 // const indexRouter = require('./src/routes/');
 const animalsRouter = require('./src/routes/animals');
