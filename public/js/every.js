@@ -1,6 +1,5 @@
 const div = document.querySelector('.subscribe1');
 
-
 div.addEventListener('click', async (e) => {
   try {
     if (e.target.classList.contains('btn-info')) {
@@ -10,7 +9,7 @@ div.addEventListener('click', async (e) => {
        <label htmlFor="exampleInput1" class="form-label">Название животного</label>
        <input name="name" type="text" class="form-control shadow rounded" id="exampleInput4" />
 
-       <label htmlFor="exampleInput2" class="form-label">Список фотографий</label>
+       <label htmlFor="exampleInput2" class="form-label">Фотографии</label>
        <input name="img" type="text" class="form-control shadow rounded" id="exampleInput5" />
 
        <label htmlFor="exampleInput3" class="form-label">Описание</label>
@@ -33,7 +32,7 @@ div.addEventListener('click', async (e) => {
 
         const data = new FormData(formE);
         const res = Object.fromEntries(data);
-        const entryId = formE.getAttribute('id');
+        const entryId = formE.getAttribute('id'); //!
         res.id = entryId;
 
         const response = await fetch(`/animals/${e.target.id}`, {
