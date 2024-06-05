@@ -1,88 +1,100 @@
-const farmRouter = require('express').Router();
-const renderTemplate = require('../utilites/renderTemplate');
+const animalsRouter = require('express').Router();
+const renderTemplate = require('../utils/renderTemplate');
 const animalPage = require('../views/Animals');
+const everyPage = require('../views/EveryAnimal');
 const { Animal, Photo } = require('../../db/models');
 
-farmRouter.get('/:id', async (req, res) => {
-  const { login } = req.session;
-  try { 
-    const animals = Animal.findAll({
+animalsRouter.get('/', async (req, res) => {
+  // const { login } = req.session;
+  try {
+    const animals = await Animal.findAll({
       include: [{
         model: Photo,
-        as: 'images',
-        where: { animalId: Sequelize.col('animal.id'),} //
-      }]
-    })
-    console.log('+++++', animals)
+      }],
+    });
+    const login = true;
+    // console.log('======', animals);
+    console.log('======', animals[1].Photos);
 
-    // const farm = await Farm.findOne({ where: { id: req.params.id } }); //!
-    // const pets = await Pet.findAll({ where: { farm_id: farm.id} });
-    // let farmUser;
-
-    // if(login) {
-    //   const user = await User.findOne({ where: { email } });
-    //   if(farm.user_id === user.id) {
-    //     farmUser = true;
-    //   } else {
-    //     farmUser = false;
-    //   }
-    //   renderTemplate(animalPage, { email, farm, farmUser, pets }, res);
-
-    // } else {
-    //   farmUser = false;
-      // renderTemplate(animalPage, { login, animals }, res);
-    // }
-  
+    renderTemplate(animalPage, { login, animals }, res);
   } catch (error) {
-    console.log(error);
-    res.redirect(`/farm/${req.params.id}`);
+    console.log('++++', error);
+    res.redirect('/animals');
   }
-
 });
 
-farmRouter.post('/:id', async (req, res) => {
-  const { name, img } = req.body;
+animalsRouter.post('/', async (req, res) => {
+  const { name, img, text } = req.body;
   try {
-    const pet = await Pet.create({ name, img, farm_id: req.params.id });
-    res.json({ status: 'success', pet})
+    console.log('+++++++', req.body);
+    const animal = await Animal.create({ name, text });
+    const image = await Photo.create({ img, animalId: animal.id });
+    res.json({ status: 'success', animal, image });
   } catch (error) {
     console.log(error);
-    res.redirect(`/farm/${req.params.id}`);
+    // res.redirect('/animals');
   }
 });
 
-farmRouter.put('/:id', async (req, res) => {
-  const { name, img, id } = req.body;
-  try {
-    await Pet.update(
-      {
-        name, 
-        img
-      },
-      { where: { id } },
-    );
-    res.json({ status: 'success' });
+// animalsRouter.delete('/', async (req, res) => {
+//   try {
+//     const { animalId } = req.body;
+//     await Animal.destroy({
+//       where: {
+//         id: animalId,
+//       },
+//     });
+//     res.json({ change: 'success' });
+//   } catch (err) {
+//     console.log(err);
+//     res.redirect('/animals');
+//   }
+// });
 
-  } catch (error) {
-    console.log(error);
-    res.redirect(`/farm/${req.params.id}`);
-  }
-});
+// animalsRouter.get('/:id', async (req, res) => {
+//   try {
+//     const animal = await Animal.findOne({ where: { id: req.params.id } });
+//     const images = await Photo.findAll({ where: { animalId: animal.id } });
+//     console.log('+++++', animal);
 
-farmRouter.delete('/:id', async (req, res) => {     //!!
-  try{
-    const { pet_id } = req.body;
-    await Pet.destroy({
-    where: {
-      id: pet_id
-    },
-  });
-  res.json({ change: 'success'})
+//     renderTemplate(everyPage, { animal, images }, res);
+//   } catch (error) {
+//     console.log(error);
+//     res.redirect(`/animals/${req.params.id}`);
+//   }
+// });
 
-  } catch(err) {
-    console.log(err);
-    res.redirect(`/farm/${req.params.id}`);
-  }
-});
+// animalsRouter.put('/:id', async (req, res) => {
+//   const { name, text, id } = req.body;
+//   try {
+//     await Animal.update(
+//       {
+//         name,
+//         text,
+//       },
+//       { where: { id } },
+//     );
+//     res.json({ status: 'success' });
+//   } catch (error) {
+//     console.log(error);
+//     res.redirect(`/animals/${req.params.id}`);
+//   }
+// });
 
-module.exports = farmRouter;
+// animalsRouter.delete('/:id', async (req, res) => {
+//   try {
+//     const { animalId } = req.body;
+//     await Animal.destroy({
+//       where: {
+//         id: animalId,
+//       },
+//     });
+//     res.json({ change: 'success' });
+//   } catch (err) {
+//     console.log(err);
+//     res.redirect(`/animals/${req.params.id}`);
+//   }
+// });
+
+module.exports = animalsRouter;
+
