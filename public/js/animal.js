@@ -1,12 +1,15 @@
 const div = document.querySelector('.subscribe');
 const form = document.querySelector('.animalForm');
 const errMsg = document.querySelector('.animalErrMsg');
-console.log('form', form);
+const btn = document.querySelector('#photo');
+
+let num = 1;
+
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
+
   const data = new FormData(form);
   const res = Object.fromEntries(data);
-  console.log(res);
   if (!res.name || !res.img || !res.text) {
     errMsg.innerText = 'Вы что-то забыли, заполните все поля';
     errMsg.style.color = 'rgb(122, 18, 18)';
@@ -22,17 +25,30 @@ form.addEventListener('submit', async (e) => {
 
       const { status, animal, image } = await response.json();
       if (status === 'success') {
+        console.log(image.img);
         const newPet = `
-        <li className="entryitem" id=${animal.id} key=${animal.id}>
-        // <Card images=${image}>
-        <span> ${animal.name} </span>
-        <a href=${`/animals/edit/${animal.id}`} className="btn btn-primary">${animal.name}</a>
-        <button data-animalid=${animal.id} id=${animal.id} type="button" className="btn btn-danger">удалить</button>
-      </li>
+        <div class="entryitem" id=${animal.id} key=${animal.id}>
+
+        <div class="card" id={animal} class="carousel-inner">
+            <div class="carousel-item">
+              <img
+                src=${image.img}
+                class="d-block w-100"
+                alt="animal"
+                data-id=${image.id}
+              />
+            <button data-imgid=${image.id} id=${animal.id} type="button" class="btn btn-outline-dark"> удалить</button>
+            </div>
+        </div>
+
+          <a href=${`/animals/${animal.id}`} class="btn btn-primary">${animal.name}</a>
+          <button data-animalid=${animal.id} id=${animal.id} type="button" class="btn btn-danger">удалить</button>
+       </div>
           `;
 
         div.insertAdjacentHTML('beforeend', newPet);
-        document.querySelectorAll('input').forEach((el) => el.value = ''); 
+        console.log(newPet)
+        document.querySelectorAll('input').forEach((el) => el.value = '');
         errMsg?.remove();
       }
     } catch (error) {
@@ -41,13 +57,10 @@ form.addEventListener('submit', async (e) => {
   }
 });
 
-
 div.addEventListener('click', async (e) => {
   try {
     if (e.target.classList.contains('btn-danger')) {
       e.preventDefault();
-      // console.log(e.target)
-      // console.log(e.target.dataset.animalid)
       const res = { animalId: e.target.dataset.animalid };
       const response = await fetch('/animals', {
         method: 'DELETE',
@@ -60,10 +73,28 @@ div.addEventListener('click', async (e) => {
       const { change } = await response.json();
       if (change === 'success') {
         const del = e.target.closest('.entryitem');
-
         del?.remove();
       }
     }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+btn.addEventListener('click', async (e) => {
+  e.preventDefault();
+  try {
+    const find = document.querySelector(`#input${num}`);
+
+    if (find) {
+      num += 1;
+    }
+    const newPhoto = `
+    <label htmlFor="exampleInput2" class="form-label">Фотографий</label>
+    <input name=${`img${num}`} type="text" class="form-control shadow rounded" id=${`input${num}`} />
+          `;
+    const input = document.querySelector('#exampleInput5');
+    input.insertAdjacentHTML('afterend', newPhoto);
   } catch (error) {
     console.log(error);
   }
