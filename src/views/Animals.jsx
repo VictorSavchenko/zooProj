@@ -3,7 +3,6 @@ const Layout = require('./Layout');
 const Card = require('../components/All');
 
 module.exports = function Animals({ login, animals }) {
-module.exports = function Animals({ login, animals }) {
   return (
     <Layout>
       <div>
