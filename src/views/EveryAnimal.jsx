@@ -8,17 +8,19 @@ module.exports = function EveryAnimal({ animal, images }) {
       <div>
 
         <div className="subscribe1" id={animal.id}>
-            <li className="entryitem1" id={animal.id} key={animal.id}>
-              <Card key={animal.id} images={images} />
-                <span> {animal.name} </span>
-                <span> {animal.text} </span>
-              <button data-everyid={animal.id} id={animal.id} type="button" className="btn btn-danger">delete</button>
-              <button data-everyid={animal.id} id={animal.id} type="button" className="btn btn-info">edit</button>
-            </li>
+          <div className="entryitem1" id={animal.id} key={animal.id}>
+            <Card key={animal.id} animal={animal.id} images={images} />
+            <span> {animal.name} </span>
+            <span> {animal.text} </span>
+            <button data-everyid={animal.id} id={animal.id} type="button" className="btn btn-danger">удалить</button>
+            <button data-everyid={animal.id} id={animal.id} type="button" className="btn btn-info">редактировать</button>
+          </div>
         </div>
 
       </div>
       <script defer src="/js/every.js" />
+      <script defer src="/js/delete_img.js" />
+
     </Layout>
   );
 };
