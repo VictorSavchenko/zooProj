@@ -1,7 +1,7 @@
 const div = document.querySelector('.subscribe');
 const form = document.querySelector('.animalForm');
 const errMsg = document.querySelector('.animalErrMsg');
-console.log('form', form);
+console.log(form);
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const data = new FormData(form);
