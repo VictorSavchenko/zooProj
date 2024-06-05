@@ -17,16 +17,3 @@ const createAdmin = async () => {
 };
 
 // createAdmin();
-
-const deleteOldAdmin = async (login) => {
-  try {
-    await Admin.destroy({
-      where: { login },
-    });
-    console.log('Deleting success');
-  } catch (error) {
-    console.log('error ', error);
-  }
-};
-
-// deleteOldAdmin('Admin');
