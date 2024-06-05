@@ -14,7 +14,7 @@ animalsRouter.get('/', async (req, res) => {
     });
     const login = true;
     // console.log('======', animals);
-    console.log('======', animals[1].Photos);
+    // console.log('======', animals[1].Photos);
 
     renderTemplate(animalPage, { login, animals }, res);
   } catch (error) {

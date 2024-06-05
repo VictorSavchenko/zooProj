@@ -22,7 +22,6 @@ module.exports = function Animals({ login, animals }) {
 
               <button type="submit" className="btn btn-primary shadow rounded">Создать</button>
               <button type="button" className="btn btn-outline-primary" id="photo">Добавить фотографию</button>
-
               <h3 className="animalErrMsg" />
               <hr />
             </form>
