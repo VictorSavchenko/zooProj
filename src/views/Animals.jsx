@@ -29,11 +29,13 @@ module.exports = function Animals({ login, animals }) {
             </form>
 
             <div className="subscribe">
-              {animals.map((animal) => (
+              {animals.map((animal, index) => (
                 <div className="entryitem" id={animal.id} key={animal.id}>
-                  <Card key={animal.id} animal={animal.id} images={animal.Photos} />
-                  <a href={`/animals/${animal.id}`} className="btn btn-primary">{animal.name}</a>
-                  <button data-animalid={animal.id} id={animal.id} type="button" className="btn btn-danger">удалить</button>
+                  <div key={index}>
+                    <Card key={animal.id} animal={animal.id} images={animal.Photos} />
+                    <a href={`/animals/${animal.id}`} className="btn btn-primary">{animal.name}</a>
+                    <button data-animalid={animal.id} id={animal.id} type="button" className="btn btn-danger">удалить</button>
+                  </div>
                 </div>
               ))}
             </div>
@@ -41,12 +43,13 @@ module.exports = function Animals({ login, animals }) {
         ) : (
 
           <div>
-            {animals.map((animal) => (
+            {animals.map((animal, index) => (
               <div className="entry-item pad-b-4" key={animal.id}>
-                <Card className="card" key={animal.id} animal={animal.id} images={animal.Photos} />
-                {/* <img src={animal.img} alt="pet" /> */}
-                <span>{animal.name} </span>
-                <span>{animal.text} </span>
+                <div key={index}>
+                  <Card className="card" key={animal.id} animal={animal.id} images={animal.Photos} />
+                  <span>{animal.name} </span>
+                  <span>{animal.text} </span>
+                </div>
               </div>
             ))}
           </div>
