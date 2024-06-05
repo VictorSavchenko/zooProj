@@ -5,14 +5,15 @@ const express = require('express');
 const morgan = require('morgan');
 
 const session = require('express-session');
-const FileStore = require('session-file-store')(session);
+// const FileStore = require('session-file-store')(session);
 
 const dbConnectionCheckMdw = require('./src/middleware/dbConnectionCheck');
-const { checkUser, secureRoute } = require('./src/middleware/common');
+// const { checkUser, secureRoute } = require('./src/middleware/common');
 
 // const indexRouter = require('./src/routes/');
 const animalsRouter = require('./src/routes/animals');
 const adminRouter = require('./src/routes/admin.router');
+const tariffRouter = require('./src/routes/price.router');
 
 const { PORT } = process.env;
 const app = express();
@@ -39,7 +40,7 @@ app.use(dbConnectionCheckMdw);
 // app.use('/', indexRouter);
 app.use('/animals', animalsRouter);
 app.use('/admin', adminRouter);
-// app.use('/tariff', tariffRouter);
+app.use('/tariff', tariffRouter);
 
 // // app.use('*', (req, res) => {
 // //   //   res.status(404).send('404: Данной страницы не существует');
