@@ -1,5 +1,5 @@
-const React = require('react')
-;
+const React = require('react');
+
 module.exports = function Card({ animal, images }) {
   return (
     <a className="card" id={animal}>

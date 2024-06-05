@@ -3,6 +3,7 @@ const Layout = require('./Layout');
 const Card = require('../components/All');
 
 module.exports = function Animals({ login, animals }) {
+module.exports = function Animals({ login, animals }) {
   return (
     <Layout>
       <div>
@@ -13,12 +14,16 @@ module.exports = function Animals({ login, animals }) {
             <form className="animalForm">
               <label htmlFor="exampleInput1" className="form-label">Название животного</label>
               <input name="name" type="text" className="form-control shadow rounded" id="exampleInput4" />
+
               <label htmlFor="exampleInput2" className="form-label">Фотографии</label>
               <input name="img" type="text" className="form-control shadow rounded" id="exampleInput5" />
+
               <label htmlFor="exampleInput3" className="form-label">Описание</label>
               <input name="text" type="text" className="form-control shadow rounded" id="exampleInput6" />
+
               <button type="submit" className="btn btn-primary shadow rounded">Создать</button>
               <button type="button" className="btn btn-outline-primary" id="photo">Добавить фотографию</button>
+
               <h3 className="animalErrMsg" />
               <hr />
             </form>
@@ -35,6 +40,7 @@ module.exports = function Animals({ login, animals }) {
             </div>
           </>
         ) : (
+
           <div>
             {animals.map((animal, index) => (
               <div className="entry-item pad-b-4" key={animal.id}>
@@ -47,8 +53,10 @@ module.exports = function Animals({ login, animals }) {
             ))}
           </div>
         )}
+
       </div>
       <script defer src="/js/animal.js" />
+
     </Layout>
   );
 };
