@@ -1,4 +1,5 @@
 const React = require('react');
+
 module.exports = function Card({ animal, images }) {
   return (
     <div
@@ -6,8 +7,8 @@ module.exports = function Card({ animal, images }) {
       className="carousel slide"
       data-bs-ride="carousel"
     >
-      {/* <div className="card" id={animal} className="carousel-inner"> */}
-      <div className="carousel-inner">
+
+      <div className="carousel-inner" id={animal}>
         {images && images.length > 0 ? (
           images.map((img, photoIndex) => (
             <div key={photoIndex} className={`carousel-item ${photoIndex === 0 ? 'active' : ''}`}>
@@ -17,7 +18,7 @@ module.exports = function Card({ animal, images }) {
                 alt={animal.name}
                 data-id={img.id}
               />
-              {/* <button data-imgid={img.id} id={animal} type="button" className="btn btn-outline-dark">удалить</button> */}
+
             </div>
           ))
         ) : (

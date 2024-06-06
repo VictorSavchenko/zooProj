@@ -1,0 +1,16 @@
+.photo {
+    margin: 15px;
+
+    }
+    
+img {
+     margin: 10px;
+     width: 30%;
+     height: 30%;
+   }
+
+.btn {
+    margin: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

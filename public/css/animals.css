@@ -1,3 +1,37 @@
-/* img {
-    width: 40px;
-  } */
+body {
+  /* background-color: rgb(213, 173, 13); */
+  /* background-image: url('https://img.goodfon.ru/wallpaper/big/8/3a/listia-zelenye-temnyi-fon.webp'); */
+}
+.subscribe {
+  /* display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  align-content: center; */
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+  width: 70%;
+
+  }
+  .entryitem {
+    /* display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  align-content: center; */
+  margin-bottom: 25px;
+  }
+  a {
+    margin: 7px;
+    margin-bottom: 25px;
+  }
+
+
+  .btn {
+    margin: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+ 
+
