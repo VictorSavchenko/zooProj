@@ -2,7 +2,6 @@ const React = require('react');
 const Layout = require('./Layout');
 const Card = require('../components/All');
 
-
 module.exports = function Animals({ login, animals }) {
   return (
     <Layout>
