@@ -35,4 +35,23 @@
   .form-button-success {
     background-color: #28a745;
     color: white;
+    text-decoration: none;
   }
+
+  .form-container-btn {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.custom-button {
+  width: 33%;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.container {
+  margin: 100px;
+}

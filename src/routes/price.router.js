@@ -5,9 +5,20 @@ const Tariff = require('../views/Tariff');
 
 tariffRouter.get('/', async (req, res) => {
   try {
+    const { login } = req.session;
     const prices = await Price.findAll({ raw: true });
-    console.log(prices);
-    renderTemplate(Tariff, { prices }, res);
+    renderTemplate(Tariff, { prices, login }, res);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+tariffRouter.patch('/', async (req, res) => {
+  try {
+    const { newPrice, id } = req.body;
+    console.log('router>>>>', newPrice, id);
+    await Price.update({ cost: newPrice }, { where: { id } });
+    res.json({ status: 'success' });
   } catch (err) {
     console.log(err);
   }

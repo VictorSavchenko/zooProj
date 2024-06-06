@@ -2,52 +2,51 @@ const React = require('react');
 
 module.exports = function Navbar({ login }) {
   return (
-    <nav class='navbar navbar-expand-lg navbar-light bg-light'>
-      <div class='container-fluid'>
-        <a class='navbar-brand' href='/'>
-          Урюпинский
-          <br />
-          зоопарк
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container-fluid">
+        <a className="navbar-brand" href="/">
+          <img src="/assets/zooCartoon.png" alt="Логотип" className="navbar-logo" />
         </a>
         <button
-          class='navbar-toggler'
-          type='button'
-          data-bs-toggle='collapse'
-          data-bs-target='#navbarNav'
-          aria-controls='navbarNav'
-          aria-expanded='false'
-          aria-label='Toggle navigation'
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
-          <span class='navbar-toggler-icon'></span>
+          <span className="navbar-toggler-icon" />
         </button>
-        <div class='collapse navbar-collapse' id='navbarNav'>
-          <ul class='navbar-nav'>
-            <li class='nav-item'>
-              <a class='nav-link active' aria-current='page' href='/tariff'>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="nav justify-content-center">
+            <li className="nav-item">
+              <a className="nav-link navtext " aria-current="page" href="/tariff">
                 Тарифы
               </a>
             </li>
-            <li class='nav-item'>
-              <a class='nav-link' href='/animals'>
+            <li className="nav-item">
+              <a className="nav-link navtext" aria-current="page" href="/animals">
                 Животные
               </a>
             </li>
             {login ? (
-            <li class='nav-item'>
-              <a class='nav-link' href='/admin/logout'>
-                Выйти
-              </a>
-            </li>
+              <li className="nav-item">
+                <a className="nav-link navtext" href="/admin/logout">
+                  Выйти
+                </a>
+              </li>
             ) : (
-                <li class='nav-item'>
-              <a class='nav-link' href='/admin'>
-                Админ
-              </a>
-            </li>
+              <li className="nav-item">
+                <a className="nav-link navtext" href="/admin">
+                  Админ
+                </a>
+              </li>
             )}
           </ul>
         </div>
       </div>
+      <link rel="stylesheet" href="/css/navBar.css" />
     </nav>
   );
 };
