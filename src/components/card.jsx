@@ -1,14 +1,14 @@
 const React = require('react');
 
-module.exports = function Card({ images }) {
+module.exports = function Card({ animal, images }) {
   return (
-    <div className="card">
+    <a className="card" id={animal}>
       {images.map((img) => (
         <li className="photo" id={img.id} key={img.id}>
           <img src={img.img} alt="animal" />
-          <button data-imgid={img.id} id={img.id} type="button" className="btn btn-danger">удалить</button>
+          <button data-imgid={img.id} id={animal} type="button" className="btn btn-outline-dark">удалить</button>
         </li>
       ))}
-    </div>
+    </a>
   );
 };

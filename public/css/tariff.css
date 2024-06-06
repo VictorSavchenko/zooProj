@@ -1,0 +1,29 @@
+.table-tariff {
+  width: 80%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  margin: 50px;
+}
+.th-tariff {
+  background-color: #c2dafa;
+  text-align: left;
+  font-weight: bold;
+  padding: 8px;
+}
+
+.td-tariff {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.tr-tariff:nth-child(even) {
+  background-color: #e7e2e2;
+}
+
+.div-tariff {
+  border-radius: 9px;
+  width: 40%;
+  margin-bottom: 20px;
+    margin: 50px;
+}
