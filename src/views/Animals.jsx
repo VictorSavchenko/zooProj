@@ -4,7 +4,7 @@ const Card = require('../components/All');
 
 module.exports = function Animals({ login, animals }) {
   return (
-    <Layout>
+    <Layout login={login}>
       <div>
         <h2>Добрый день!</h2>
         <h3>Это наши животные:</h3>
