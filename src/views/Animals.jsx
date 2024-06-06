@@ -49,8 +49,8 @@ module.exports = function Animals({ login, animals }) {
               <div className="entryitem" key={animal.id}>
                 <div key={index}>
                   <Card className="card" key={animal.id} animal={animal} images={animal.Photos} />
-                  <span>{animal.name} </span>
-                  <span>{animal.text} </span>
+                  <span className="h">{animal.name} </span>
+                  <span className="h">{animal.text} </span>
                 </div>
               </div>
             ))}
@@ -58,6 +58,7 @@ module.exports = function Animals({ login, animals }) {
         )}
 
       </div>
+      
       <script defer src="/js/animal.js" />
       <link rel="stylesheet" href="/css/forms.css" />
       <link rel="stylesheet" href="/css/animals.css" />
