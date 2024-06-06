@@ -10,7 +10,7 @@ module.exports = function EveryAnimal({ login, animal, images }) {
         <div>
           <div className="subscribe1" id={animal.id}>
             <div className="entryitem1" id={animal.id} key={animal.id}>
-              <Card key={animal.id} animal={animal.id} images={images} />
+              <Card key={animal.id} login={login} animal={animal.id} images={images} />
               <span> {animal.name} </span>
               <span> {animal.text} </span>
               <button data-everyid={animal.id} id={animal.id} type="button" className="btn btn-outline-danger">удалить</button>
