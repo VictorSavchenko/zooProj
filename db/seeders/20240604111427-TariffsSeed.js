@@ -23,7 +23,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        tariff: 'Взрослые в будни',
+        tariff: 'Дети в будни',
         cost: 100,
         createdAt: new Date(),
         updatedAt: new Date(),
