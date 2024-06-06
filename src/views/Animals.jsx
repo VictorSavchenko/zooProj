@@ -58,7 +58,7 @@ module.exports = function Animals({ login, animals }) {
         )}
 
       </div>
-      
+
       <script defer src="/js/animal.js" />
       <link rel="stylesheet" href="/css/forms.css" />
       <link rel="stylesheet" href="/css/animals.css" />

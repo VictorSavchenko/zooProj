@@ -18,7 +18,7 @@ module.exports = {
       },
       {
         name: 'Тигр Никола',
-        text: 'Бдизко не подходить!',
+        text: 'Близко не подходить!',
         createdAt: new Date(),
         updatedAt: new Date(),
       },

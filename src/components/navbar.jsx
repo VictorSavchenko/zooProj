@@ -2,7 +2,7 @@ const React = require('react');
 
 module.exports = function Navbar({ login }) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className=" bg-nav navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
           <img src="/assets/zooCartoon.png" alt="Логотип" className="navbar-logo" />
